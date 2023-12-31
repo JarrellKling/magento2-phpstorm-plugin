@@ -1,0 +1,13 @@
+#if (${TYPE})
+<type name="${TYPE}">
+#end
+<plugin name="${NAME}"
+#if (${SORT_ORDER})
+        type="${PLUGIN_TYPE}"
+        sortOrder="${SORT_ORDER}" />
+#else
+        type="${PLUGIN_TYPE}" />
+#end
+#if (${TYPE})
+</type>
+#end

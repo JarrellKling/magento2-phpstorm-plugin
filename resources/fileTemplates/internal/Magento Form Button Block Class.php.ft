@@ -1,0 +1,37 @@
+<?php
+#parse("PHP File Header.php")
+
+namespace ${NAMESPACE};
+
+#set($uses = ${USES})
+#foreach ($use in $uses.split(","))
+use $use;
+#end
+
+/**
+ * ${CLASS_ANNOTATION}
+ */
+class ${NAME} extends ${GENERIC_BUTTON} implements ${DATA_PROVIDER_TYPE}
+{
+    /**
+     * Retrieve ${TYPE} button settings.
+     *
+     * @return array
+     */
+    public function getButtonData(): array
+    {
+#if (${GET_ID})
+        if (!$this->${GET_ID}) {
+            return [];
+        }
+
+#end
+        return $this->wrapButtonSettings(
+            __('${LABEL}')->getText(),
+            '${CLASS}',
+            ${ON_CLICK},
+            ${DATA_ATTRS},
+            ${SORT_ORDER}
+        );
+    }
+}
